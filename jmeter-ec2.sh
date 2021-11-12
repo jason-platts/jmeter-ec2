@@ -173,7 +173,7 @@ function runsetup() {
       attempted_instanceids=(`aws ec2 run-instances \
                   --key-name "$AMAZON_KEYPAIR_NAME" \
                   --instance-type "$INSTANCE_TYPE" \
-                  --security-group-ids "$INSTANCE_SECURITYGROUP_IDS" \
+                  --security-group-ids $INSTANCE_SECURITYGROUP_IDS \
                   --count 1:$instance_count \
                   $vpcsettings \
                   --image-id $AMI_ID \
@@ -309,7 +309,7 @@ function runsetup() {
       hosts=(`aws ec2 describe-instances --instance-ids ${attempted_instanceids[@]} \
 						--region $REGION \
 						--output text \
-						--query 'Reservations[].Instances[].PublicIpAddress'`)
+						--query 'Reservations[].Instances[].PrivateIpAddress'`)
 
       # echo "all hosts ready"
     else # Amazon probably failed to start a host [*** NOTE this is fairly common ***] so show a msg - TO DO. Could try to replace it with a new one?
