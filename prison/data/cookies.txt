@@ -1,0 +1,2 @@
+# JMeter generated Cookie file
+learn7syst.open.ac.uk	TRUE	/	TRUE	0	CDC_UID	a11332323
